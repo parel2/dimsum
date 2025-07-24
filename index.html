@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khim Dimsum - Authentic Chinese Dimsum</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts untuk desain Chinese-style -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* === KONFIGURASI WARNA UTAMA === */
+        :root {
+            --primary-red: #C62828;      /* Merah tua cerah */
+            --primary-yellow: #F9E79F;   /* Kuning buram */
+            --text-dark: #2c3e50;
+            --text-light: #ecf0f1;
+            --shadow: 0 4px 15px rgba(198, 40, 40, 0.2);
+        }
+
+        /* === RESET DAN STYLING DASAR === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', 'Noto Sans SC', sans-serif;
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, #fff 50%, var(--primary-yellow) 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* === BACKGROUND PATTERN CHINESE STYLE === */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(198, 40, 40, 0.1) 1px, transparent 1px),
+                radial-gradient(circle at 80% 70%, rgba(198, 40, 40, 0.1) 1px, transparent 1px),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C62828' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-size: 200px 200px, 200px 200px, 60px 60px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        /* === HEADER DAN NAVBAR === */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-red) 0%, #8B0000 100%);
+            box-shadow: var(--shadow);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            color: var(--primary-yellow) !important;
+            font-size: 1.5rem;
+        }
+
+        .navbar-brand img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            border-radius: 50%;
+            border: 3px solid var(--primary-yellow);
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            margin: 0 5px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background-color: var(--primary-yellow);
+            color: var(--primary-red) !important;
+            transform: translateY(-2px);
+        }
+
+        .dropdown-menu {
+            background-color: var(--primary-yellow);
+            border: none;
+            box-shadow: var(--shadow);
+        }
+
+        .dropdown-item {
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--primary-red);
+            color: var(--text-light);
+        }
+
+        /* === HERO SECTION === */
+        .hero-section {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(198, 40, 40, 0.9), rgba(249, 231, 159, 0.9));
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* === SECTION MENU === */
+        .menu-section {
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            color: var(--primary-red);
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '🏮';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -20px;
+            font-size: 1.5rem;
+        }
+
+        /* === KARTU MENU === */
+        .menu-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            height: 100%;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(198, 40, 40, 0.3);
+        }
+
+        .menu-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--primary-yellow);
+        }
+
+        .menu-body {
+            padding: 1.5rem;
+        }
+
+        .menu-title {
+            color: var(--primary-red);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-description {
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .price-variants {
+            margin-bottom: 1rem;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .price-label {
+            color: var(--text-dark);
+        }
+
+        .price-value {
+            color: var(--primary-red);
+            font-weight: 600;
+        }
+
+        .btn-add-cart {
+            background: linear-gradient(135deg, var(--primary-red), #8B0000);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            width: 100%;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-add-cart:hover {
+            background: linear-gradient(135deg, #8B0000, var(--primary-red));
+            transform: scale(1.05);
+            color: white;
+        }
+
+        /* === KERANJANG MENGAMBANG === */
+        .floating-cart {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--primary-red), #8B0000);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .floating-cart:hover {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, #8B0000, var(--primary-red));
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--primary-yellow);
+            color: var(--primary-red);
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* === ANIMASI KERANJANG BERGETAR === */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .shake-animation {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        /* === ANIMASI ITEM MELOMPAT === */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .bounce-animation {
+            animation: bounce 0.6s ease-in-out;
+        }
+
+        /* === MODAL KERANJANG === */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+        }
+
+        .cart-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--primary-yellow);
+            padding-bottom: 1rem;
+        }
+
+        .cart-title {
+            color: var(--primary-red);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .cart-item-variant {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .quantity-display {
+            min-width: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .remove-item {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .cart-total {
+            text-align: center;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: var(--primary-yellow);
+            border-radius: 10px;
+        }
+
+        .total-label {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-red);
+        }
+
+        .checkout-form {
+            margin-top: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-red);
+        }
+
+        .btn-checkout {
+            background: linear-gradient(135deg, var(--primary-red), #8B0000);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            width: 100%;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-checkout:hover {
+            background: linear-gradient(135deg, #8B0000, var(--primary-red));
+            transform: translateY(-2px);
+        }
+
+        /* === RESPONSIF === */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cart-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+            
+            .floating-cart {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* === STYLING KHUSUS UNTUK HIDDEN ELEMENTS === */
+        .hidden {
+            display: none !important;
+        }
+
+        /* === EMPTY CART MESSAGE === */
+        .empty-cart {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-dark);
+        }
+
+        .empty-cart i {
+            font-size: 3rem;
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- === NAVIGATION BAR === -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <!-- Logo dan Brand -->
+            <a class="navbar-brand" href="#home">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjorQSXuOqunUTP3TtC4thVSJVCOuu_Jvr-xT9wBSlJe5KjuY_yesusVksvT-i4OSc_9TSZnwvHNp8OosSPZtM1QnWxwonrjbKsmfRhHfnVKYktQu4_mB3fpZAYdGeiIZQgC428JyaUWqn4FR0uwBkIjK5OWcfjG-czN4fHIb9JM5aVAEuT4kNg-UPt0T4O/s1600/0a39243b-70eb-4e70-8f6f-a36ec02dd237.jpg" alt="Khim Dimsum Logo">
+                Khim Dimsum
+            </a>
+            
+            <!-- Toggle untuk mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Menu navigasi -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">🏠 Home</a>
+                    </li>
+                    
+                    <!-- Dropdown Kategori Menu -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-bs-toggle="dropdown">
+                            🍜 Menu
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="showCategory('dimsum')">🥟 Dimsum</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="showCategory('minuman')">🍵 Minuman</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="showCategory('cemilan')">🍪 Cemilan</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">ℹ️ Tentang Kami</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- === HERO SECTION === -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">🏮 Selamat Datang di Khim Dimsum 🏮</h1>
+            <p class="hero-subtitle">Authentic Chinese Dimsum & Delicious Food - Rasakan kelezatan dimsum autentik dengan cita rasa oriental yang tak terlupakan</p>
+        </div>
+    </section>
+
+    <!-- === CONTAINER UTAMA === -->
+    <div class="container">
+        <!-- === SECTION DIMSUM === -->
+        <div id="dimsum-section" class="menu-section">
+            <h2 class="section-title">🥟 Dimsum Spesial</h2>
+            <div class="row" id="dimsum-menu">
+                <!-- Menu dimsum akan dimuat di sini oleh JavaScript -->
+            </div>
+        </div>
+
+        <!-- === SECTION MINUMAN === -->
+        <div id="minuman-section" class="menu-section">
+            <h2 class="section-title">🍵 Minuman Segar</h2>
+            <div class="row" id="minuman-menu">
+                <!-- Menu minuman akan dimuat di sini oleh JavaScript -->
+            </div>
+        </div>
+
+        <!-- === SECTION CEMILAN === -->
+        <div id="cemilan-section" class="menu-section">
+            <h2 class="section-title">🍪 Cemilan Lezat</h2>
+            <div class="row" id="cemilan-menu">
+                <!-- Menu cemilan akan dimuat di sini oleh JavaScript -->
+            </div>
+        </div>
+
+        <!-- === SECTION TENTANG KAMI === -->
+        <div id="about" class="menu-section">
+            <h2 class="section-title">ℹ️ Tentang Khim Dimsum</h2>
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div class="menu-card">
+                        <div class="menu-body text-center">
+                            <h3 class="menu-title">🏮 Kisah Kami</h3>
+                            <p class="menu-description">
+                                Khim Dimsum adalah usaha kecil menengah (UMKM) yang berdedikasi untuk menyajikan dimsum dan makanan oriental autentik dengan cita rasa yang tak terlupakan. Kami menggunakan resep turun-temurun dan bahan-bahan berkualitas untuk memberikan pengalaman kuliner terbaik bagi pelanggan kami.
+                            </p>
+                            <p class="menu-description">
+                                <strong>📍 Lokasi:</strong> Indonesia<br>
+                                <strong>📞 WhatsApp:</strong> 082145545119<br>
+                                <strong>⏰ Jam Operasional:</strong> Setiap Hari
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- === TOMBOL KERANJANG MENGAMBANG === -->
+    <button class="floating-cart" onclick="openCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cart-count">0</span>
+    </button>
+
+    <!-- === MODAL KERANJANG === -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3 class="cart-title">🛒 Keranjang Belanja</h3>
+                <button class="close-cart" onclick="closeCart()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div id="cart-items">
+                <!-- Item keranjang akan dimuat di sini -->
+            </div>
+            
+            <div class="cart-total">
+                <div class="total-label">Total: Rp <span id="total-price">0</span></div>
+            </div>
+            
+            <!-- Form untuk data pelanggan -->
+            <form class="checkout-form" id="checkout-form">
+                <div class="form-group">
+                    <label class="form-label">👤 Nama Lengkap:</label>
+                    <input type="text" class="form-control" id="customer-name" placeholder="Masukkan nama Anda" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">⏰ Jam Ambil:</label>
+                    <input type="time" class="form-control" id="pickup-time" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">📝 Catatan Tambahan (Opsional):</label>
+                    <textarea class="form-control" id="notes" rows="3" placeholder="Contoh: Extra pedas, tanpa bawang, dll..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn-checkout">
+                    <i class="fab fa-whatsapp"></i> Pesan Sekarang via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        /* ======================================
+           KONFIGURASI DATA MENU
+           ====================================== 
+           
+           CARA MENAMBAH MENU BARU:
+           1. Tambahkan item baru ke dalam kategori yang sesuai
+           2. Format: {
+               nama: "Nama Menu",
+               deskripsi: "Deskripsi singkat menu",
+               variants: [
+                   {label: "Ukuran 1", price: harga1},
+                   {label: "Ukuran 2", price: harga2}
+               ],
+               image: "URL_gambar_makanan"
+           }
+           
+           CARA MENAMBAH KATEGORI BARU:
+           1. Tambahkan kategori baru ke object menuData
+           2. Tambahkan link kategori di navbar dropdown
+           3. Tambahkan section HTML untuk kategori tersebut
+        */
+        
+        const menuData = {
+            // === KATEGORI DIMSUM ===
+            dimsum: [
+                {
+                    nama: "Dimsum Mentai",
+                    deskripsi: "Dimsum dengan saus mentai yang gurih dan lezat, cocok untuk pecinta seafood",
+                    variants: [
+                        {label: "Isi 3 pcs", price: 13000},
+                        {label: "Isi 6 pcs", price: 26000},
+                        {label: "Isi 20 pcs", price: 80000}
+                    ],
+                    image: "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Dimsum Mentai Cheese",
+                    deskripsi: "Perpaduan sempurna antara mentai dan keju yang creamy, memberikan rasa yang rich",
+                    variants: [
+                        {label: "Isi 3 pcs", price: 15000},
+                        {label: "Isi 6 pcs", price: 30000},
+                        {label: "Isi 20 pcs", price: 100000}
+                    ],
+                    image: "https://images.unsplash.com/photo-1563379091396-cd7cc6d42a3a?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Dimsum Original",
+                    deskripsi: "Dimsum klasik dengan isian daging dan sayuran, cita rasa authentic yang tak pernah bosan",
+                    variants: [
+                        {label: "Isi 3 pcs", price: 10000},
+                        {label: "Isi 6 pcs", price: 22000},
+                        {label: "Isi 20 pcs", price: 60000}
+                    ],
+                    image: "https://images.unsplash.com/photo-1526318472351-c75fcf070305?w=400&h=300&fit=crop"
+                }
+            ],
+            
+            // === KATEGORI MINUMAN ===
+            minuman: [
+                {
+                    nama: "Teh Poci",
+                    deskripsi: "Teh tradisional yang diseduh dengan sempurna, memberikan kesegaran alami",
+                    variants: [
+                        {label: "Original", price: 3000},
+                        {label: "Isi Gula", price: 6000},
+                        {label: "Isi Teh", price: 8000}
+                    ],
+                    image: "https://images.unsplash.com/photo-1556881261-6bd341186b2f?w=400&h=300&fit=crop"
+                }
+            ],
+            
+            // === KATEGORI CEMILAN ===
+            cemilan: [
+                {
+                    nama: "Risol Mayo",
+                    deskripsi: "Risol crispy dengan mayonnaise yang creamy, cemilan yang sempurna",
+                    variants: [
+                        {label: "Per pcs", price: 6000}
+                    ],
+                    image: "https://images.unsplash.com/photo-1532980400857-e8d9d275d858?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Dimsum Goreng Keju",
+                    deskripsi: "Dimsum yang digoreng crispy dengan taburan keju yang melimpah",
+                    variants: [
+                        {label: "Per pcs", price: 8000}
+                    ],
+                    image: "https://images.unsplash.com/photo-1559847844-5315695dadae?w=400&h=300&fit=crop"
+                }
+            ]
+        };
+
+        /* ======================================
+           SISTEM KERANJANG BELANJA
+           ====================================== */
+        
+        // Menyimpan data keranjang dalam localStorage untuk persistensi data
+        let cart = JSON.parse(localStorage.getItem('khim-dimsum-cart')) || [];
+        
+        // Nomor WhatsApp kasir (bisa diubah sesuai kebutuhan)
+        const WHATSAPP_NUMBER = "082145545119";
+
+        /* ======================================
+           FUNGSI RENDER MENU
+           ====================================== */
+        
+        function renderMenu() {
+            // Loop untuk setiap kategori menu
+            Object.keys(menuData).forEach(category => {
+                const container = document.getElementById(`${category}-menu`);
+                if (!container) return;
+                
+                container.innerHTML = '';
+                
+                // Loop untuk setiap item dalam kategori
+                menuData[category].forEach((item, index) => {
+                    const col = document.createElement('div');
+                    col.className = 'col-lg-4 col-md-6 col-sm-12 mb-4';
+                    
+                    // Membuat HTML kartu menu
+                    col.innerHTML = `
+                        <div class="menu-card">
+                            <img src="${item.image}" alt="${item.nama}" class="menu-image">
+                            <div class="menu-body">
+                                <h4 class="menu-title">${item.nama}</h4>
+                                <p class="menu-description">${item.deskripsi}</p>
+                                <div class="price-variants">
+                                    ${item.variants.map(variant => `
+                                        <div class="price-item">
+                                            <span class="price-label">${variant.label}:</span>
+                                            <span class="price-value">Rp ${variant.price.toLocaleString('id-ID')}</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle w-100 mb-2" type="button" data-bs-toggle="dropdown">
+                                        Pilih Varian
+                                    </button>
+                                    <ul class="dropdown-menu w-100">
+                                        ${item.variants.map((variant, vIndex) => `
+                                            <li><a class="dropdown-item" href="#" onclick="addToCart('${category}', ${index}, ${vIndex})">${variant.label} - Rp ${variant.price.toLocaleString('id-ID')}</a></li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    container.appendChild(col);
+                });
+            });
+        }
+
+        /* ======================================
+           FUNGSI KERANJANG BELANJA
+           ====================================== */
+        
+        function addToCart(category, itemIndex, variantIndex) {
+            const item = menuData[category][itemIndex];
+            const variant = item.variants[variantIndex];
+            
+            // Cek apakah item sudah ada di keranjang
+            const existingItemIndex = cart.findIndex(cartItem => 
+                cartItem.nama === item.nama && cartItem.variant === variant.label
+            );
+            
+            if (existingItemIndex > -1) {
+                // Jika sudah ada, tambah quantity
+                cart[existingItemIndex].quantity += 1;
+            } else {
+                // Jika belum ada, tambah item baru
+                cart.push({
+                    nama: item.nama,
+                    variant: variant.label,
+                    price: variant.price,
+                    quantity: 1
+                });
+            }
+            
+            // Simpan ke localStorage
+            localStorage.setItem('khim-dimsum-cart', JSON.stringify(cart));
+            
+            // Update tampilan
+            updateCartDisplay();
+            animateCartButton();
+            animateMenuItem(event.target);
+            
+            // Tampilkan notifikasi
+            showNotification(`${item.nama} (${variant.label}) ditambahkan ke keranjang!`);
+        }
+        
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('khim-dimsum-cart', JSON.stringify(cart));
+            updateCartDisplay();
+        }
+        
+        function updateQuantity(index, change) {
+            cart[index].quantity += change;
+            
+            if (cart[index].quantity <= 0) {
+                removeFromCart(index);
+            } else {
+                localStorage.setItem('khim-dimsum-cart', JSON.stringify(cart));
+                updateCartDisplay();
+            }
+        }
+        
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cart-count');
+            const cartItems = document.getElementById('cart-items');
+            const totalPrice = document.getElementById('total-price');
+            
+            // Update jumlah item di badge
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Update tampilan item di keranjang
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>Keranjang Anda masih kosong</p>
+                        <p>Mulai belanja sekarang!</p>
+                    </div>
+                `;
+            } else {
+                cartItems.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.nama}</div>
+                            <div class="cart-item-variant">${item.variant}</div>
+                            <div class="price-value">Rp ${item.price.toLocaleString('id-ID')}</div>
+                        </div>
+                        <div class="cart-item-controls">
+                            <button class="quantity-btn" onclick="updateQuantity(${index}, -1)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity-display">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="updateQuantity(${index}, 1)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <button class="remove-item" onclick="removeFromCart(${index})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            // Update total harga
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            totalPrice.textContent = total.toLocaleString('id-ID');
+        }
+
+        /* ======================================
+           FUNGSI ANIMASI
+           ====================================== */
+        
+        function animateCartButton() {
+            const cartButton = document.querySelector('.floating-cart');
+            cartButton.classList.add('shake-animation');
+            setTimeout(() => {
+                cartButton.classList.remove('shake-animation');
+            }, 500);
+        }
+        
+        function animateMenuItem(element) {
+            const menuCard = element.closest('.menu-card');
+            menuCard.classList.add('bounce-animation');
+            setTimeout(() => {
+                menuCard.classList.remove('bounce-animation');
+            }, 600);
+        }
+
+        /* ======================================
+           FUNGSI MODAL KERANJANG
+           ====================================== */
+        
+        function openCart() {
+            document.getElementById('cart-modal').style.display = 'block';
+            updateCartDisplay();
+        }
+        
+        function closeCart() {
+            document.getElementById('cart-modal').style.display = 'none';
+        }
+        
+        // Tutup modal ketika klik di luar area modal
+        document.getElementById('cart-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCart();
+            }
+        });
+
+        /* ======================================
+           FUNGSI NAVIGASI KATEGORI
+           ====================================== */
+        
+        function showCategory(category) {
+            // Scroll ke section yang dipilih dengan animasi smooth
+            const section = document.getElementById(`${category}-section`);
+            if (section) {
+                section.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        /* ======================================
+           FUNGSI PEMESANAN WHATSAPP
+           ====================================== */
+        
+        function processOrder() {
+            const customerName = document.getElementById('customer-name').value;
+            const pickupTime = document.getElementById('pickup-time').value;
+            const notes = document.getElementById('notes').value;
+            
+            if (!customerName || !pickupTime) {
+                alert('Mohon lengkapi nama dan jam ambil!');
+                return;
+            }
+            
+            if (cart.length === 0) {
+                alert('Keranjang Anda masih kosong!');
+                return;
+            }
+            
+            // Format pesan WhatsApp
+            let message = `🏮 *PESANAN KHIM DIMSUM* 🏮\n\n`;
+            message += `👤 *Nama:* ${customerName}\n`;
+            message += `⏰ *Jam Ambil:* ${pickupTime}\n\n`;
+            message += `📝 *Pesanan:*\n`;
+            
+            let total = 0;
+            cart.forEach(item => {
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+                message += `• ${item.nama} (${item.variant}) x${item.quantity}\n`;
+                message += `  Rp ${item.price.toLocaleString('id-ID')} x ${item.quantity} = Rp ${subtotal.toLocaleString('id-ID')}\n\n`;
+            });
+            
+            message += `💰 *Total Harga: Rp ${total.toLocaleString('id-ID')}*\n\n`;
+            
+            if (notes) {
+                message += `📋 *Catatan:* ${notes}\n\n`;
+            }
+            
+            message += `Terima kasih telah memesan di Khim Dimsum! 🙏`;
+            
+            // Encode pesan untuk URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Buka WhatsApp
+            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Bersihkan keranjang setelah pesan
+            cart = [];
+            localStorage.setItem('khim-dimsum-cart', JSON.stringify(cart));
+            updateCartDisplay();
+            closeCart();
+            
+            // Reset form
+            document.getElementById('checkout-form').reset();
+            
+            showNotification('Pesanan berhasil dikirim ke WhatsApp!');
+        }
+
+        /* ======================================
+           FUNGSI NOTIFIKASI
+           ====================================== */
+        
+        function showNotification(message) {
+            // Buat elemen notifikasi
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, var(--primary-red), #8B0000);
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                box-shadow: var(--shadow);
+                z-index: 3000;
+                font-weight: 600;
+                animation: slideIn 0.3s ease-out;
+            `;
+            notification.textContent = message;
+            
+            // Tambahkan CSS animasi
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes slideOut {
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(100%); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            document.body.appendChild(notification);
+            
+            // Hapus notifikasi setelah 3 detik
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease-out';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                    document.head.removeChild(style);
+                }, 300);
+            }, 3000);
+        }
+
+        /* ======================================
+           EVENT LISTENERS
+           ====================================== */
+        
+        // Event listener untuk form checkout
+        document.getElementById('checkout-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            processOrder();
+        });
+        
+        // Event listener untuk smooth scroll pada link navigasi
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        /* ======================================
+           INISIALISASI APLIKASI
+           ====================================== */
+        
+        // Jalankan ketika halaman sudah dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMenu();
+            updateCartDisplay();
+            
+            // Set waktu default untuk jam ambil (1 jam dari sekarang)
+            const now = new Date();
+            now.setHours(now.getHours() + 1);
+            const timeString = now.toTimeString().slice(0, 5);
+            document.getElementById('pickup-time').value = timeString;
+            
+            console.log('🏮 Khim Dimsum Website telah dimuat dengan sukses! 🏮');
+        });
+
+        /* ======================================
+           FUNGSI TAMBAHAN UNTUK PENGEMBANGAN
+           ======================================
+           
+           Jika Anda ingin menambahkan fitur baru:
+           
+           1. MENAMBAH KATEGORI MENU BARU:
+              - Tambahkan kategori ke object menuData
+              - Tambahkan link di dropdown navbar
+              - Tambahkan section HTML untuk kategori
+           
+           2. MENGUBAH NOMOR WHATSAPP:
+              - Ubah konstanta WHATSAPP_NUMBER di atas
+           
+           3. MENAMBAH ANIMASI BARU:
+              - Definisikan keyframes CSS baru
+              - Buat fungsi JavaScript untuk trigger animasi
+           
+           4. MENGUBAH TAMPILAN:
+              - Modifikasi variabel CSS di :root
+              - Sesuaikan class-class styling
+        */
+    </script>
+</body>
+</html>
