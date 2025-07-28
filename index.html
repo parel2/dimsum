@@ -15,11 +15,11 @@
     <style>
         /* === KONFIGURASI WARNA UTAMA === */
         :root {
-            --primary-red: #C62828;      /* Merah tua cerah */
-            --primary-yellow: #F9E79F;   /* Kuning buram */
-            --text-dark: #2c3e50;
-            --text-light: #ecf0f1;
-            --shadow: 0 4px 15px rgba(198, 40, 40, 0.2);
+            --primary-red: #2a0000;      /* Merah tua cerah */
+            --primary-yellow: #f08989;   /* Kuning buram */
+            --text-dark: #23374a;
+            --text-light: #07aed8;
+            --shadow: 0 4px 15px rgba(180, 46, 46, 0.329);
         }
 
         /* === RESET DAN STYLING DASAR === */
@@ -35,6 +35,7 @@
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
+            padding-top: 80px;
         }
 
         /* === BACKGROUND PATTERN CHINESE STYLE === */
@@ -59,6 +60,17 @@
             background: linear-gradient(135deg, var(--primary-red) 0%, #8B0000 100%);
             box-shadow: var(--shadow);
             padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1100;
+            transition: all 0.3s ease;
+        }
+
+        /* Tambahan padding untuk body agar content tidak tertutup navbar */
+        body {
+            padding-top: 80px;
         }
 
         .navbar-brand {
@@ -75,6 +87,68 @@
             margin-right: 10px;
             border-radius: 50%;
             border: 3px solid var(--primary-yellow);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand img:hover {
+            transform: scale(1.1);
+        }
+
+        /* === LOGO MODAL === */
+        .logo-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2500;
+            backdrop-filter: blur(5px);
+        }
+
+        .logo-modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            animation: logoZoomIn 0.5s ease-out;
+        }
+
+        .logo-modal img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 8px solid var(--primary-yellow);
+            box-shadow: 0 0 30px rgba(234, 33, 33, 0.461);
+            margin-bottom: 20px;
+        }
+
+        .logo-modal-title {
+            color: var(--primary-yellow);
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+        }
+
+        .logo-modal-subtitle {
+            color: white;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        @keyframes logoZoomIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.3);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
         }
 
         .navbar-nav .nav-link {
@@ -111,7 +185,7 @@
         .hero-section {
             padding: 4rem 0;
             text-align: center;
-            background: linear-gradient(135deg, rgba(198, 40, 40, 0.9), rgba(249, 231, 159, 0.9));
+            background: linear-gradient(135deg, rgba(220, 28, 28, 0.922), rgba(249, 231, 159, 0.9));
             color: white;
             margin-bottom: 3rem;
         }
@@ -144,7 +218,7 @@
         }
 
         .section-title::after {
-            content: '🏮';
+            content: '';
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
@@ -152,20 +226,140 @@
             font-size: 1.5rem;
         }
 
+        /* === ANIMASI AWAN CHINA === */
+        .floating-clouds {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.849);
+            border-radius: 50px;
+            opacity: 0.3;
+            animation: floatClouds 20s infinite linear;
+        }
+
+        .cloud::before,
+        .cloud::after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+        }
+
+        .cloud1 {
+            width: 100px;
+            height: 40px;
+            top: 20%;
+            left: -100px;
+            animation-duration: 25s;
+        }
+
+        .cloud1::before {
+            width: 60px;
+            height: 60px;
+            top: -30px;
+            left: 10px;
+        }
+
+        .cloud1::after {
+            width: 80px;
+            height: 50px;
+            top: -20px;
+            right: 10px;
+        }
+
+        .cloud2 {
+            width: 80px;
+            height: 35px;
+            top: 60%;
+            left: -80px;
+            animation-duration: 30s;
+            animation-delay: -10s;
+        }
+
+        .cloud2::before {
+            width: 50px;
+            height: 50px;
+            top: -25px;
+            left: 15px;
+        }
+
+        .cloud2::after {
+            width: 70px;
+            height: 40px;
+            top: -15px;
+            right: 15px;
+        }
+
+        .cloud3 {
+            width: 120px;
+            height: 45px;
+            top: 40%;
+            left: -120px;
+            animation-duration: 35s;
+            animation-delay: -20s;
+        }
+
+        .cloud3::before {
+            width: 70px;
+            height: 70px;
+            top: -35px;
+            left: 20px;
+        }
+
+        .cloud3::after {
+            width: 90px;
+            height: 55px;
+            top: -25px;
+            right: 20px;
+        }
+
+        @keyframes floatClouds {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(calc(100vw + 200px));
+            }
+        }
+
         /* === KARTU MENU === */
         .menu-card {
-            background: white;
+            background: linear-gradient(135deg, var(--primary-red) 0%, #330909b1 30%, #a0001b71 70%, var(--primary-red) 100%);
             border-radius: 15px;
             box-shadow: var(--shadow);
             overflow: hidden;
             transition: all 0.3s ease;
             margin-bottom: 2rem;
             height: 100%;
+            position: relative;
+        }
+
+        .menu-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(249, 231, 159, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 30%, rgba(249, 231, 159, 0.05) 50%, transparent 70%);
+            pointer-events: none;
         }
 
         .menu-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(198, 40, 40, 0.3);
+            box-shadow: 0 8px 25px rgba(174, 30, 30, 0.3);
         }
 
         .menu-image {
@@ -177,6 +371,9 @@
 
         .menu-body {
             padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            position: relative;
+            z-index: 2;
         }
 
         .menu-title {
@@ -503,7 +700,7 @@
         <div class="container">
             <!-- Logo dan Brand -->
             <a class="navbar-brand" href="#home">
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjorQSXuOqunUTP3TtC4thVSJVCOuu_Jvr-xT9wBSlJe5KjuY_yesusVksvT-i4OSc_9TSZnwvHNp8OosSPZtM1QnWxwonrjbKsmfRhHfnVKYktQu4_mB3fpZAYdGeiIZQgC428JyaUWqn4FR0uwBkIjK5OWcfjG-czN4fHIb9JM5aVAEuT4kNg-UPt0T4O/s1600/0a39243b-70eb-4e70-8f6f-a36ec02dd237.jpg" alt="Khim Dimsum Logo">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjorQSXuOqunUTP3TtC4thVSJVCOuu_Jvr-xT9wBSlJe5KjuY_yesusVksvT-i4OSc_9TSZnwvHNp8OosSPZtM1QnWxwonrjbKsmfRhHfnVKYktQu4_mB3fpZAYdGeiIZQgC428JyaUWqn4FR0uwBkIjK5OWcfjG-czN4fHIb9JM5aVAEuT4kNg-UPt0T4O/s1600/0a39243b-70eb-4e70-8f6f-a36ec02dd237.jpg" alt="Khim Dimsum Logo" onclick="toggleLogoModal(event)">
                 Khim Dimsum
             </a>
             
@@ -526,8 +723,14 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#" onclick="showCategory('dimsum')">🥟 Dimsum</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="showCategory('minuman')">🍵 Minuman</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="showCategory('tea')">🫖 Tea</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="showCategory('nutrisari')">🍊 Nutrisari Series</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="showCategory('chocolate')">🍫 Chocolate</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="showCategory('coffee')">☕ Coffee</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="showCategory('milk')">🥛 Milk</a></li>
                             <li><a class="dropdown-item" href="#" onclick="showCategory('cemilan')">🍪 Cemilan</a></li>
+                          
+                           
                         </ul>
                     </li>
                     
@@ -539,10 +742,26 @@
         </div>
     </nav>
 
+    <!-- === LOGO MODAL === -->
+    <div id="logoModal" class="logo-modal" onclick="closeLogoModal(event)">
+        <div class="logo-modal-content">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjorQSXuOqunUTP3TtC4thVSJVCOuu_Jvr-xT9wBSlJe5KjuY_yesusVksvT-i4OSc_9TSZnwvHNp8OosSPZtM1QnWxwonrjbKsmfRhHfnVKYktQu4_mB3fpZAYdGeiIZQgC428JyaUWqn4FR0uwBkIjK5OWcfjG-czN4fHIb9JM5aVAEuT4kNg-UPt0T4O/s1600/0a39243b-70eb-4e70-8f6f-a36ec02dd237.jpg" alt="Khim Dimsum Logo">
+            <div class="logo-modal-title"> Khim Dimsum </div>
+            <div class="logo-modal-subtitle">Authentic Chinese Dimsum & Delicious Food</div>
+        </div>
+    </div>
+
+    <!-- === ANIMASI AWAN BERGERAK === -->
+    <div class="floating-clouds">
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+    </div>
+
     <!-- === HERO SECTION === -->
     <section id="home" class="hero-section">
         <div class="container">
-            <h1 class="hero-title">🏮 Khim Dimsum 🏮</h1>
+            <h1 class="hero-title"> Khim Dimsum </h1>
             <p class="hero-subtitle">Authentic Chinese Dimsum & Delicious Food - Rasakan kelezatan dimsum autentik dengan cita rasa oriental yang tak terlupakan</p>
         </div>
     </section>
@@ -551,31 +770,65 @@
     <div class="container">
         <!-- === SECTION DIMSUM === -->
         <div id="dimsum-section" class="menu-section">
-            <h2 class="section-title">Dimsum Spesial</h2>
+            <h2 class="section-title">🥟 Dimsum Spesial</h2>
             <div class="row" id="dimsum-menu">
                 <!-- Menu dimsum akan dimuat di sini oleh JavaScript -->
             </div>
         </div>
 
-        <!-- === SECTION MINUMAN === -->
-        <div id="minuman-section" class="menu-section">
-            <h2 class="section-title">Minuman Segar</h2>
-            <div class="row" id="minuman-menu">
-                <!-- Menu minuman akan dimuat di sini oleh JavaScript -->
+        <!-- === SECTION TEA === -->
+        <div id="tea-section" class="menu-section">
+            <h2 class="section-title">🫖 Tea Collection</h2>
+            <div class="row" id="tea-menu">
+                <!-- Menu tea akan dimuat di sini oleh JavaScript -->
+            </div>
+        </div>
+
+        <!-- === SECTION NUTRISARI === -->
+        <div id="nutrisari-section" class="menu-section">
+            <h2 class="section-title">🍊 Nutrisari Series</h2>
+            <div class="row" id="nutrisari-menu">
+                <!-- Menu nutrisari akan dimuat di sini oleh JavaScript -->
+            </div>
+        </div>
+
+        <!-- === SECTION CHOCOLATE === -->
+        <div id="chocolate-section" class="menu-section">
+            <h2 class="section-title">🍫 Chocolate Drinks</h2>
+            <div class="row" id="chocolate-menu">
+                <!-- Menu chocolate akan dimuat di sini oleh JavaScript -->
+            </div>
+        </div>
+
+        <!-- === SECTION COFFEE === -->
+        <div id="coffee-section" class="menu-section">
+            <h2 class="section-title">☕ Coffee Collection</h2>
+            <div class="row" id="coffee-menu">
+                <!-- Menu coffee akan dimuat di sini oleh JavaScript -->
+            </div>
+        </div>
+
+        <!-- === SECTION MILK === -->
+        <div id="milk-section" class="menu-section">
+            <h2 class="section-title">🥛 Milk & Dairy</h2>
+            <div class="row" id="milk-menu">
+                <!-- Menu milk akan dimuat di sini oleh JavaScript -->
             </div>
         </div>
 
         <!-- === SECTION CEMILAN === -->
         <div id="cemilan-section" class="menu-section">
-            <h2 class="section-title">Cemilan Lezat</h2>
+            <h2 class="section-title">🍪 Cemilan Lezat</h2>
             <div class="row" id="cemilan-menu">
                 <!-- Menu cemilan akan dimuat di sini oleh JavaScript -->
             </div>
         </div>
 
+      
+
         <!-- === SECTION TENTANG KAMI === -->
         <div id="about" class="menu-section">
-            <h2 class="section-title">Tentang Khim Dimsum</h2>
+            <h2 class="section-title">ℹ️ Tentang Khim Dimsum</h2>
             <div class="row">
                 <div class="col-md-8 mx-auto">
                     <div class="menu-card">
@@ -585,7 +838,7 @@
                                 Khim Dimsum adalah usaha kecil menengah (UMKM) yang berdedikasi untuk menyajikan dimsum dan makanan oriental autentik dengan cita rasa yang tak terlupakan. Kami menggunakan resep turun-temurun dan bahan-bahan berkualitas untuk memberikan pengalaman kuliner terbaik bagi pelanggan kami.
                             </p>
                             <p class="menu-description">
-                                <strong>📍 Lokasi:</strong> Jalur 11 dekat lapangan bola timur<br>
+                                <strong>📍 Lokasi:</strong> Jalur 11, sebelah timur lapangan bola<br>
                                 <strong>📞 WhatsApp:</strong> 082145545119<br>
                                 <strong>⏰ Jam Operasional:</strong> Setiap Hari
                             </p>
@@ -705,19 +958,286 @@
                 }
             ],
             
-            // === KATEGORI MINUMAN ===
-            minuman: [
+            // === KATEGORI TEA ===
+            tea: [
                 {
-                    nama: "Teh Poci",
-                    deskripsi: "Teh tradisional yang diseduh dengan sempurna, memberikan kesegaran alami",
-                    variants: [
-                        {label: "Original", price: 3000},
-                        {label: "Isi Gula", price: 6000},
-                        {label: "Isi Teh", price: 8000}
-                    ],
-                    image: "https://images.unsplash.com/photo-1556881261-6bd341186b2f?w=400&h=300&fit=crop"
+                    nama: "Es Teh",
+                    deskripsi: "Teh dingin segar yang menyegarkan di cuaca panas",
+                    variants: [{label: "1 Gelas", price: 3000}],
+                    image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Teh Hangat",
+                    deskripsi: "Teh hangat yang menghangatkan dan menenangkan",
+                    variants: [{label: "1 Gelas", price: 3000}],
+                    image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Teh Tarik",
+                    deskripsi: "Teh susu khas Malaysia yang creamy dan harum",
+                    variants: [{label: "1 Gelas", price: 6000}],
+                    image: "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "HiLo Thai Tea",
+                    deskripsi: "Thai tea dengan rasa yang khas dan menyegarkan",
+                    variants: [{label: "1 Gelas", price: 7000}],
+                    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Extra Joss",
+                    deskripsi: "Minuman energi untuk menambah tenaga",
+                    variants: [{label: "Original", price: 5000}, {label: "+ Susu", price: 6000}],
+                    image: "https://images.unsplash.com/photo-1542843137-8791a6904d14?w=400&h=300&fit=crop"
                 }
             ],
+
+            // === KATEGORI NUTRISARI ===
+            nutrisari: [
+                {
+                    nama: "Sweet Guava",
+                    deskripsi: "Minuman jambu biji manis yang segar",
+                    variants: [{label: "1 Gelas", price: 5000}],
+                    image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Markisa",
+                    deskripsi: "Minuman markisa dengan rasa asam manis yang unik",
+                    variants: [{label: "1 Gelas", price: 5000}],
+                    image: "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Sweet Manggo",
+                    deskripsi: "Minuman mangga manis yang tropical",
+                    variants: [{label: "1 Gelas", price: 5000}],
+                    image: "https://images.unsplash.com/photo-1605027990121-3b2c6c41fdb2?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Mangga Gandaria",
+                    deskripsi: "Minuman mangga gandaria dengan cita rasa khas",
+                    variants: [{label: "1 Gelas", price: 5000}],
+                    image: "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Florida Orange",
+                    deskripsi: "Jeruk florida yang segar dan vitamin C tinggi",
+                    variants: [{label: "1 Gelas", price: 5000}],
+                    image: "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Sweet Orange",
+                    deskripsi: "Jeruk manis yang menyegarkan",
+                    variants: [{label: "1 Gelas", price: 5000}],
+                    image: "https://images.unsplash.com/photo-1580013759032-c96505d22d0c?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Leci",
+                    deskripsi: "Minuman leci yang manis dan eksotis",
+                    variants: [{label: "1 Gelas", price: 5000}],
+                    image: "https://images.unsplash.com/photo-1597306691834-6ad0b8e08ecf?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Anggur",
+                    deskripsi: "Minuman anggur yang segar",
+                    variants: [{label: "1 Gelas", price: 5000}],
+                    image: "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Strawberry",
+                    deskripsi: "Minuman strawberry yang manis dan segar",
+                    variants: [{label: "1 Gelas", price: 5000}],
+                    image: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Sirsak",
+                    deskripsi: "Minuman sirsak yang creamy dan unik",
+                    variants: [{label: "1 Gelas", price: 5000}],
+                    image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Milky Orange",
+                    deskripsi: "Jeruk susu yang creamy dan segar",
+                    variants: [{label: "1 Gelas", price: 5000}],
+                    image: "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Jeruk Nipis",
+                    deskripsi: "Jeruk nipis segar yang asam manis",
+                    variants: [{label: "1 Gelas", price: 5000}],
+                    image: "https://images.unsplash.com/photo-1546118661-1eac0295cd8e?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Jeruk Peras",
+                    deskripsi: "Jeruk peras fresh yang kaya vitamin C",
+                    variants: [{label: "1 Gelas", price: 5000}],
+                    image: "https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Lemon Tea",
+                    deskripsi: "Teh lemon yang segar dan menyehatkan",
+                    variants: [{label: "1 Gelas", price: 5000}],
+                    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Yuzu Orange",
+                    deskripsi: "Jeruk yuzu dengan rasa yang unik dan eksotis",
+                    variants: [{label: "1 Gelas", price: 5000}],
+                    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Semangka",
+                    deskripsi: "Jus semangka segar yang manis",
+                    variants: [{label: "1 Gelas", price: 5000}],
+                    image: "https://images.unsplash.com/photo-1587817112804-5095bc4e3d50?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Blewah",
+                    deskripsi: "Jus blewah yang manis dan menyegarkan",
+                    variants: [{label: "1 Gelas", price: 5000}],
+                    image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Es Rujak",
+                    deskripsi: "Minuman rujak dengan campuran buah-buahan",
+                    variants: [{label: "1 Gelas", price: 5000}],
+                    image: "https://images.unsplash.com/photo-1590736969955-71cc94901144?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Nanas",
+                    deskripsi: "Jus nanas segar yang asam manis",
+                    variants: [{label: "1 Gelas", price: 5000}],
+                    image: "https://images.unsplash.com/photo-1589820296156-2454bb8a6ad1?w=400&h=300&fit=crop"
+                }
+            ],
+
+            // === KATEGORI CHOCOLATE ===
+            chocolate: [
+                {
+                    nama: "Chocolatos Chocolate",
+                    deskripsi: "Minuman coklat yang rich dan creamy",
+                    variants: [{label: "1 Gelas", price: 7000}],
+                    image: "https://images.unsplash.com/photo-1542843137-8791a6904d14?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Chocolatos Matcha",
+                    deskripsi: "Perpaduan unik coklat dan matcha yang eksotis",
+                    variants: [{label: "1 Gelas", price: 7000}],
+                    image: "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Beng-Beng",
+                    deskripsi: "Minuman dengan rasa wafer coklat Beng-Beng",
+                    variants: [{label: "1 Gelas", price: 7000}],
+                    image: "https://images.unsplash.com/photo-1541658016709-82535e94bc69?w=400&h=300&fit=crop"
+                }
+            ],
+
+            // === KATEGORI COFFEE ===
+            coffee: [
+                {
+                    nama: "Good Day Mocacinno",
+                    deskripsi: "Kopi moka dengan rasa coklat yang nikmat",
+                    variants: [{label: "1 Gelas", price: 6000}],
+                    image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Good Day Vanilla Latte",
+                    deskripsi: "Latte dengan aroma vanilla yang harum",
+                    variants: [{label: "1 Gelas", price: 6000}],
+                    image: "https://images.unsplash.com/photo-1545665225-b23b99e4d45e?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Good Day Chococinno",
+                    deskripsi: "Cappuccino dengan rasa coklat yang rich",
+                    variants: [{label: "1 Gelas", price: 6000}],
+                    image: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Good Day Original",
+                    deskripsi: "Kopi original dengan cita rasa klasik",
+                    variants: [{label: "1 Gelas", price: 6000}],
+                    image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Good Day Cappuccino",
+                    deskripsi: "Cappuccino dengan foam yang sempurna",
+                    variants: [{label: "1 Gelas", price: 6000}],
+                    image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Caffino Kopi Latte Classic",
+                    deskripsi: "Latte klasik dengan rasa kopi yang authentic",
+                    variants: [{label: "1 Gelas", price: 6000}],
+                    image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Caffino Kopi Latte Mocca",
+                    deskripsi: "Latte moka dengan perpaduan kopi dan coklat",
+                    variants: [{label: "1 Gelas", price: 6000}],
+                    image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Caffino Kopi Latte Hazelnut",
+                    deskripsi: "Latte dengan aroma hazelnut yang eksotis",
+                    variants: [{label: "1 Gelas", price: 6000}],
+                    image: "https://images.unsplash.com/photo-1512568400610-62da28bc8a13?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "LokaLate Kopi Alpukat",
+                    deskripsi: "Perpaduan unik kopi dan alpukat yang creamy",
+                    variants: [{label: "1 Gelas", price: 6000}],
+                    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "LokaLate Kopi Gula Aren",
+                    deskripsi: "Kopi dengan gula aren yang memberikan rasa manis alami",
+                    variants: [{label: "1 Gelas", price: 6000}],
+                    image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&h=300&fit=crop"
+                }
+            ],
+
+            // === KATEGORI MILK ===
+            milk: [
+                {
+                    nama: "HiLo Susu Chocolate Taro",
+                    deskripsi: "Susu coklat dengan rasa taro yang unik",
+                    variants: [{label: "1 Gelas", price: 6000}],
+                    image: "https://images.unsplash.com/photo-1571212515416-dbadc897d5b1?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "HiLo Susu Chocolate Banana",
+                    deskripsi: "Susu coklat pisang yang creamy dan manis",
+                    variants: [{label: "1 Gelas", price: 6000}],
+                    image: "https://images.unsplash.com/photo-1481487196290-c152efe083f5?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "HiLo Susu Chocolate Avocado",
+                    deskripsi: "Susu coklat alpukat yang sehat dan lezat",
+                    variants: [{label: "1 Gelas", price: 6000}],
+                    image: "https://images.unsplash.com/photo-1568739175391-6c7bb7aaac04?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Indomilk Coklat",
+                    deskripsi: "Susu coklat klasik yang disukai semua umur",
+                    variants: [{label: "1 Gelas", price: 6000}],
+                    image: "https://images.unsplash.com/photo-1559717865-a99cac1c95d8?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Indomilk Putih",
+                    deskripsi: "Susu putih murni yang segar dan bergizi",
+                    variants: [{label: "1 Gelas", price: 6000}],
+                    image: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&h=300&fit=crop"
+                },
+                {
+                    nama: "Milo",
+                    deskripsi: "Minuman coklat malt yang berenergi",
+                    variants: [{label: "Regular", price: 6000}, {label: "Double", price: 7000}],
+                    image: "https://images.unsplash.com/photo-1541658016709-82535e94bc69?w=400&h=300&fit=crop"
+                }
+            ],
+
+           
+           
             
             // === KATEGORI CEMILAN ===
             cemilan: [
@@ -725,15 +1245,15 @@
                     nama: "Risol Mayo",
                     deskripsi: "Risol crispy dengan mayonnaise yang creamy, cemilan yang sempurna",
                     variants: [
-                        {label: "Per pack", price: 20000}
+                        {label: "Per pcs", price: 6000}
                     ],
                     image: "https://images.unsplash.com/photo-1532980400857-e8d9d275d858?w=400&h=300&fit=crop"
                 },
                 {
                     nama: "Dimsum Goreng Keju",
-                    deskripsi: "Dimsum yang digoreng crispy dengan isian keju yang melimpah dan lumer",
+                    deskripsi: "Dimsum yang digoreng crispy dengan taburan keju yang melimpah",
                     variants: [
-                        {label: "Per pack", price: 10000}
+                        {label: "Per pcs", price: 8000}
                     ],
                     image: "https://images.unsplash.com/photo-1559847844-5315695dadae?w=400&h=300&fit=crop"
                 }
@@ -1067,6 +1587,34 @@
         }
 
         /* ======================================
+           FUNGSI LOGO MODAL
+           ====================================== */
+        
+        // Fungsi untuk membuka/menutup logo modal
+        function toggleLogoModal(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const modal = document.getElementById('logoModal');
+            modal.style.display = 'block';
+        }
+        
+        // Fungsi untuk menutup logo modal
+        function closeLogoModal(event) {
+            if (event.target === event.currentTarget) {
+                const modal = document.getElementById('logoModal');
+                modal.style.display = 'none';
+            }
+        }
+        
+        // Menutup modal dengan tombol ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modal = document.getElementById('logoModal');
+                modal.style.display = 'none';
+            }
+        });
+
+        /* ======================================
            EVENT LISTENERS
            ====================================== */
         
@@ -1132,3 +1680,4 @@
     </script>
 </body>
 </html>
+
