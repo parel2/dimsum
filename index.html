@@ -5,24 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khim Dimsum - Authentic Chinese Dimsum</title>
     
-    <!-- Bootstrap CSS -->
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome untuk ikon -->
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts untuk desain Chinese-style -->
+    
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* === KONFIGURASI WARNA UTAMA === */
+        
         :root {
-            --primary-red: #2a0000;      /* Merah tua cerah */
-            --primary-yellow: #f08989;   /* Kuning buram */
+            --primary-red: #2a0000;      
+            --primary-yellow: #f08989;   
             --text-dark: #23374a;
             --text-light: #07aed8;
             --shadow: 0 4px 15px rgba(180, 46, 46, 0.329);
         }
 
-        /* === RESET DAN STYLING DASAR === */
+        
         * {
             margin: 0;
             padding: 0;
@@ -38,7 +38,7 @@
             padding-top: 80px;
         }
 
-        /* === BACKGROUND PATTERN CHINESE STYLE === */
+        
         body::before {
             content: '';
             position: fixed;
@@ -55,7 +55,7 @@
             opacity: 0.3;
         }
 
-        /* === HEADER DAN NAVBAR === */
+        
         .navbar {
             background: linear-gradient(135deg, var(--primary-red) 0%, #8B0000 100%);
             box-shadow: var(--shadow);
@@ -68,7 +68,7 @@
             transition: all 0.3s ease;
         }
 
-        /* Tambahan padding untuk body agar content tidak tertutup navbar */
+        
         body {
             padding-top: 80px;
         }
@@ -95,7 +95,7 @@
             transform: scale(1.1);
         }
 
-        /* === LOGO MODAL === */
+        
         .logo-modal {
             display: none;
             position: fixed;
@@ -181,7 +181,7 @@
             color: var(--text-light);
         }
 
-        /* === HERO SECTION === */
+        
         .hero-section {
             padding: 4rem 0;
             text-align: center;
@@ -202,7 +202,7 @@
             opacity: 0.9;
         }
 
-        /* === SECTION MENU === */
+        
         .menu-section {
             padding: 2rem 0;
             margin-bottom: 2rem;
@@ -226,7 +226,7 @@
             font-size: 1.5rem;
         }
 
-        /* === ANIMASI AWAN CHINA === */
+        
         .floating-clouds {
             position: fixed;
             top: 0;
@@ -331,7 +331,7 @@
             }
         }
 
-        /* === KARTU MENU === */
+        
         .menu-card {
             background: linear-gradient(135deg, var(--primary-red) 0%, #330909b1 30%, #a0001b71 70%, var(--primary-red) 100%);
             border-radius: 15px;
@@ -427,7 +427,7 @@
             color: white;
         }
 
-        /* === KERANJANG MENGAMBANG === */
+        
         .floating-cart {
             position: fixed;
             bottom: 20px;
@@ -466,7 +466,7 @@
             font-weight: 700;
         }
 
-        /* === ANIMASI KERANJANG BERGETAR === */
+        
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             25% { transform: translateX(-5px); }
@@ -477,7 +477,7 @@
             animation: shake 0.5s ease-in-out;
         }
 
-        /* === ANIMASI ITEM MELOMPAT === */
+        
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
@@ -487,7 +487,7 @@
             animation: bounce 0.6s ease-in-out;
         }
 
-        /* === MODAL KERANJANG === */
+        
         .cart-modal {
             display: none;
             position: fixed;
@@ -653,7 +653,7 @@
             transform: translateY(-2px);
         }
 
-        /* === RESPONSIF === */
+        
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2rem;
@@ -675,12 +675,12 @@
             }
         }
 
-        /* === STYLING KHUSUS UNTUK HIDDEN ELEMENTS === */
+        
         .hidden {
             display: none !important;
         }
 
-        /* === EMPTY CART MESSAGE === */
+        
         .empty-cart {
             text-align: center;
             padding: 2rem;
@@ -691,32 +691,32 @@
             font-size: 3rem;
             color: var(--primary-yellow);
             margin-bottom: 1rem;
-        }
+        } 
     </style>
 </head>
 <body>
-    <!-- === NAVIGATION BAR === -->
+    
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <!-- Logo dan Brand -->
+            
             <a class="navbar-brand" href="#home">
                 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjorQSXuOqunUTP3TtC4thVSJVCOuu_Jvr-xT9wBSlJe5KjuY_yesusVksvT-i4OSc_9TSZnwvHNp8OosSPZtM1QnWxwonrjbKsmfRhHfnVKYktQu4_mB3fpZAYdGeiIZQgC428JyaUWqn4FR0uwBkIjK5OWcfjG-czN4fHIb9JM5aVAEuT4kNg-UPt0T4O/s1600/0a39243b-70eb-4e70-8f6f-a36ec02dd237.jpg" alt="Khim Dimsum Logo" onclick="toggleLogoModal(event)">
                 Khim Dimsum
             </a>
             
-            <!-- Toggle untuk mobile -->
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
-            <!-- Menu navigasi -->
+            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#home">🏠 Home</a>
                     </li>
                     
-                    <!-- Dropdown Kategori Menu -->
+                    
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-bs-toggle="dropdown">
                             🍜 Menu
@@ -742,7 +742,7 @@
         </div>
     </nav>
 
-    <!-- === LOGO MODAL === -->
+    
     <div id="logoModal" class="logo-modal" onclick="closeLogoModal(event)">
         <div class="logo-modal-content">
             <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjorQSXuOqunUTP3TtC4thVSJVCOuu_Jvr-xT9wBSlJe5KjuY_yesusVksvT-i4OSc_9TSZnwvHNp8OosSPZtM1QnWxwonrjbKsmfRhHfnVKYktQu4_mB3fpZAYdGeiIZQgC428JyaUWqn4FR0uwBkIjK5OWcfjG-czN4fHIb9JM5aVAEuT4kNg-UPt0T4O/s1600/0a39243b-70eb-4e70-8f6f-a36ec02dd237.jpg" alt="Khim Dimsum Logo">
@@ -751,14 +751,14 @@
         </div>
     </div>
 
-    <!-- === ANIMASI AWAN BERGERAK === -->
+    
     <div class="floating-clouds">
         <div class="cloud cloud1"></div>
         <div class="cloud cloud2"></div>
         <div class="cloud cloud3"></div>
     </div>
 
-    <!-- === HERO SECTION === -->
+    
     <section id="home" class="hero-section">
         <div class="container">
             <h1 class="hero-title"> Khim Dimsum </h1>
@@ -766,67 +766,67 @@
         </div>
     </section>
 
-    <!-- === CONTAINER UTAMA === -->
+    
     <div class="container">
-        <!-- === SECTION DIMSUM === -->
+        
         <div id="dimsum-section" class="menu-section">
             <h2 class="section-title">🥟 Dimsum Spesial</h2>
             <div class="row" id="dimsum-menu">
-                <!-- Menu dimsum akan dimuat di sini oleh JavaScript -->
+                
             </div>
         </div>
 
-        <!-- === SECTION TEA === -->
+        
         <div id="tea-section" class="menu-section">
-            <h2 class="section-title">🫖 Tea Collection</h2>
+            <h2 class="section-title">🫖 Es Teh Poci</h2>
             <div class="row" id="tea-menu">
-                <!-- Menu tea akan dimuat di sini oleh JavaScript -->
+                
             </div>
         </div>
 
-        <!-- === SECTION NUTRISARI === -->
+        
         <div id="nutrisari-section" class="menu-section">
             <h2 class="section-title">🍊 Nutrisari Series</h2>
             <div class="row" id="nutrisari-menu">
-                <!-- Menu nutrisari akan dimuat di sini oleh JavaScript -->
+                
             </div>
         </div>
 
-        <!-- === SECTION CHOCOLATE === -->
+        
         <div id="chocolate-section" class="menu-section">
             <h2 class="section-title">🍫 Chocolate Drinks</h2>
             <div class="row" id="chocolate-menu">
-                <!-- Menu chocolate akan dimuat di sini oleh JavaScript -->
+                
             </div>
         </div>
 
-        <!-- === SECTION COFFEE === -->
+        
         <div id="coffee-section" class="menu-section">
             <h2 class="section-title">☕ Coffee Collection</h2>
             <div class="row" id="coffee-menu">
-                <!-- Menu coffee akan dimuat di sini oleh JavaScript -->
+                
             </div>
         </div>
 
-        <!-- === SECTION MILK === -->
+        
         <div id="milk-section" class="menu-section">
             <h2 class="section-title">🥛 Milk & Dairy</h2>
             <div class="row" id="milk-menu">
-                <!-- Menu milk akan dimuat di sini oleh JavaScript -->
+                
             </div>
         </div>
 
-        <!-- === SECTION CEMILAN === -->
+        
         <div id="cemilan-section" class="menu-section">
             <h2 class="section-title">🍪 Cemilan Lezat</h2>
             <div class="row" id="cemilan-menu">
-                <!-- Menu cemilan akan dimuat di sini oleh JavaScript -->
+                
             </div>
         </div>
 
       
 
-        <!-- === SECTION TENTANG KAMI === -->
+        
         <div id="about" class="menu-section">
             <h2 class="section-title">ℹ️ Tentang Khim Dimsum</h2>
             <div class="row">
@@ -849,13 +849,13 @@
         </div>
     </div>
 
-    <!-- === TOMBOL KERANJANG MENGAMBANG === -->
+    
     <button class="floating-cart" onclick="openCart()">
         <i class="fas fa-shopping-cart"></i>
         <span class="cart-badge" id="cart-count">0</span>
     </button>
 
-    <!-- === MODAL KERANJANG === -->
+    
     <div id="cart-modal" class="cart-modal">
         <div class="cart-content">
             <div class="cart-header">
@@ -866,14 +866,14 @@
             </div>
             
             <div id="cart-items">
-                <!-- Item keranjang akan dimuat di sini -->
+                
             </div>
             
             <div class="cart-total">
                 <div class="total-label">Total: Rp <span id="total-price">0</span></div>
             </div>
             
-            <!-- Form untuk data pelanggan -->
+            
             <form class="checkout-form" id="checkout-form">
                 <div class="form-group">
                     <label class="form-label">👤 Nama Lengkap:</label>
@@ -897,38 +897,16 @@
         </div>
     </div>
 
-    <!-- Bootstrap JavaScript -->
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        /* ======================================
-           KONFIGURASI DATA MENU
-           ====================================== 
-           
-           CARA MENAMBAH MENU BARU:
-           1. Tambahkan item baru ke dalam kategori yang sesuai
-           2. Format: {
-               nama: "Nama Menu",
-               deskripsi: "Deskripsi singkat menu",
-               variants: [
-                   {label: "Ukuran 1", price: harga1},
-                   {label: "Ukuran 2", price: harga2}
-               ],
-               image: "URL_gambar_makanan"
-           }
-           
-           CARA MENAMBAH KATEGORI BARU:
-           1. Tambahkan kategori baru ke object menuData
-           2. Tambahkan link kategori di navbar dropdown
-           3. Tambahkan section HTML untuk kategori tersebut
-        */
-        
+     
         const menuData = {
-            // === KATEGORI DIMSUM ===
+
             dimsum: [
                 {
                     nama: "Dimsum Mentai",
-                    deskripsi: "Dimsum dengan saus mentai yang gurih dan lezat, cocok untuk pecinta seafood",
                     variants: [
                         {label: "Isi 3 pcs", price: 13000},
                         {label: "Isi 6 pcs", price: 26000},
@@ -938,7 +916,6 @@
                 },
                 {
                     nama: "Dimsum Mentai Cheese",
-                    deskripsi: "Perpaduan sempurna antara mentai dan keju yang creamy, memberikan rasa yang rich",
                     variants: [
                         {label: "Isi 3 pcs", price: 15000},
                         {label: "Isi 6 pcs", price: 30000},
@@ -948,7 +925,6 @@
                 },
                 {
                     nama: "Dimsum Original",
-                    deskripsi: "Dimsum klasik dengan isian daging dan sayuran, cita rasa authentic yang tak pernah bosan",
                     variants: [
                         {label: "Isi 3 pcs", price: 10000},
                         {label: "Isi 6 pcs", price: 22000},
@@ -958,279 +934,233 @@
                 }
             ],
             
-            // === KATEGORI TEA ===
+
             tea: [
                 {
-                    nama: "Es Teh",
-                    deskripsi: "Teh dingin segar yang menyegarkan di cuaca panas",
-                    variants: [{label: "1 Gelas", price: 3000}],
+                    nama: "Teh Poci Original",
+                    variants: [{label: "1 Cup Reguler", price: 4000},
+                    {label: "1 Cup Jumbo", price: 5000}],
                     image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&h=300&fit=crop"
                 },
+                
                 {
-                    nama: "Teh Hangat",
-                    deskripsi: "Teh hangat yang menghangatkan dan menenangkan",
-                    variants: [{label: "1 Gelas", price: 3000}],
-                    image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop"
-                },
-                {
-                    nama: "Teh Tarik",
-                    deskripsi: "Teh susu khas Malaysia yang creamy dan harum",
-                    variants: [{label: "1 Gelas", price: 6000}],
+                    nama: "Teh Poci Tarik",
+                    variants: [{label: "1 Cup", price: 6000}],
                     image: "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "HiLo Thai Tea",
-                    deskripsi: "Thai tea dengan rasa yang khas dan menyegarkan",
-                    variants: [{label: "1 Gelas", price: 7000}],
+                    nama: "Teh Poci HiLo Thai Tea",
+                    variants: [{label: "1 Cup", price: 7000}],
                     image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
                 },
                 {
                     nama: "Extra Joss",
-                    deskripsi: "Minuman energi untuk menambah tenaga",
                     variants: [{label: "Original", price: 5000}, {label: "+ Susu", price: 6000}],
                     image: "https://images.unsplash.com/photo-1542843137-8791a6904d14?w=400&h=300&fit=crop"
                 }
             ],
 
-            // === KATEGORI NUTRISARI ===
+
             nutrisari: [
                 {
-                    nama: "Sweet Guava",
-                    deskripsi: "Minuman jambu biji manis yang segar",
-                    variants: [{label: "1 Gelas", price: 5000}],
+                    nama: "Teh Poci Sweet Guava",
+                    variants: [{label: "1 Cup", price: 5000}],
                     image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Markisa",
-                    deskripsi: "Minuman markisa dengan rasa asam manis yang unik",
-                    variants: [{label: "1 Gelas", price: 5000}],
+                    nama: "Teh Poci Markisa",
+                    variants: [{label: "1 Cup", price: 5000}],
                     image: "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Sweet Manggo",
-                    deskripsi: "Minuman mangga manis yang tropical",
-                    variants: [{label: "1 Gelas", price: 5000}],
+                    nama: "Teh Poci Sweet Manggo",
+                    variants: [{label: "1 Cup", price: 5000}],
                     image: "https://images.unsplash.com/photo-1605027990121-3b2c6c41fdb2?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Mangga Gandaria",
-                    deskripsi: "Minuman mangga gandaria dengan cita rasa khas",
-                    variants: [{label: "1 Gelas", price: 5000}],
+                    nama: "Teh Poci Mangga Gandaria",
+                    variants: [{label: "1 Cup", price: 5000}],
                     image: "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Florida Orange",
-                    deskripsi: "Jeruk florida yang segar dan vitamin C tinggi",
-                    variants: [{label: "1 Gelas", price: 5000}],
+                    nama: "Teh Poci Florida Orange",
+                    variants: [{label: "1 Cup", price: 5000}],
                     image: "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Sweet Orange",
-                    deskripsi: "Jeruk manis yang menyegarkan",
-                    variants: [{label: "1 Gelas", price: 5000}],
+                    nama: "Teh Poci Sweet Orange",
+                    variants: [{label: "1 Cup", price: 5000}],
                     image: "https://images.unsplash.com/photo-1580013759032-c96505d22d0c?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Leci",
-                    deskripsi: "Minuman leci yang manis dan eksotis",
-                    variants: [{label: "1 Gelas", price: 5000}],
+                    nama: "Teh Poci Leci",
+                    variants: [{label: "1 Cup", price: 5000}],
                     image: "https://images.unsplash.com/photo-1597306691834-6ad0b8e08ecf?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Anggur",
-                    deskripsi: "Minuman anggur yang segar",
-                    variants: [{label: "1 Gelas", price: 5000}],
+                    nama: "Teh Poci Anggur",
+                    variants: [{label: "1 Cup", price: 5000}],
                     image: "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Strawberry",
-                    deskripsi: "Minuman strawberry yang manis dan segar",
-                    variants: [{label: "1 Gelas", price: 5000}],
+                    nama: "Teh Poci Strawberry",
+                    variants: [{label: "1 Cup", price: 5000}],
                     image: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Sirsak",
-                    deskripsi: "Minuman sirsak yang creamy dan unik",
-                    variants: [{label: "1 Gelas", price: 5000}],
+                    nama: "Teh Poci Sirsak",
+                    variants: [{label: "1 Cup", price: 5000}],
                     image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Milky Orange",
-                    deskripsi: "Jeruk susu yang creamy dan segar",
-                    variants: [{label: "1 Gelas", price: 5000}],
+                    nama: "Teh Poci Milky Orange",
+                    variants: [{label: "1 Cup", price: 5000}],
                     image: "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Jeruk Nipis",
-                    deskripsi: "Jeruk nipis segar yang asam manis",
-                    variants: [{label: "1 Gelas", price: 5000}],
+                    nama: "Teh Poci Jeruk Nipis",
+                    variants: [{label: "1 Cup", price: 5000}],
                     image: "https://images.unsplash.com/photo-1546118661-1eac0295cd8e?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Jeruk Peras",
-                    deskripsi: "Jeruk peras fresh yang kaya vitamin C",
-                    variants: [{label: "1 Gelas", price: 5000}],
+                    nama: "Teh Poci Jeruk Peras",
+                    variants: [{label: "1 Cup", price: 5000}],
                     image: "https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Lemon Tea",
-                    deskripsi: "Teh lemon yang segar dan menyehatkan",
-                    variants: [{label: "1 Gelas", price: 5000}],
+                    nama: "Teh Poci Lemon Tea",
+                    variants: [{label: "1 Cup", price: 5000}],
                     image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Yuzu Orange",
-                    deskripsi: "Jeruk yuzu dengan rasa yang unik dan eksotis",
-                    variants: [{label: "1 Gelas", price: 5000}],
+                    nama: "Teh Poci Yuzu Orange",
+                    variants: [{label: "1 Cup", price: 5000}],
                     image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Semangka",
-                    deskripsi: "Jus semangka segar yang manis",
-                    variants: [{label: "1 Gelas", price: 5000}],
+                    nama: "Teh Poci Semangka",
+                    variants: [{label: "1 Cup", price: 5000}],
                     image: "https://images.unsplash.com/photo-1587817112804-5095bc4e3d50?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Blewah",
-                    deskripsi: "Jus blewah yang manis dan menyegarkan",
-                    variants: [{label: "1 Gelas", price: 5000}],
+                    nama: "Teh Poci Blewah",
+                    variants: [{label: "1 Cup", price: 5000}],
                     image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Es Rujak",
-                    deskripsi: "Minuman rujak dengan campuran buah-buahan",
-                    variants: [{label: "1 Gelas", price: 5000}],
+                    nama: "Teh Poci Es Rujak",
+                    variants: [{label: "1 Cup", price: 5000}],
                     image: "https://images.unsplash.com/photo-1590736969955-71cc94901144?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Nanas",
-                    deskripsi: "Jus nanas segar yang asam manis",
-                    variants: [{label: "1 Gelas", price: 5000}],
+                    nama: "Teh Poci Nanas",
+                    variants: [{label: "1 Cup", price: 5000}],
                     image: "https://images.unsplash.com/photo-1589820296156-2454bb8a6ad1?w=400&h=300&fit=crop"
                 }
             ],
 
-            // === KATEGORI CHOCOLATE ===
+
             chocolate: [
                 {
-                    nama: "Chocolatos Chocolate",
-                    deskripsi: "Minuman coklat yang rich dan creamy",
-                    variants: [{label: "1 Gelas", price: 7000}],
+                    nama: "Teh Poci Chocolatos Chocolate",
+                    variants: [{label: "1 Cup", price: 7000}],
                     image: "https://images.unsplash.com/photo-1542843137-8791a6904d14?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Chocolatos Matcha",
-                    deskripsi: "Perpaduan unik coklat dan matcha yang eksotis",
-                    variants: [{label: "1 Gelas", price: 7000}],
+                    nama: "Teh Poci Chocolatos Matcha",
+                    variants: [{label: "1 Cup", price: 7000}],
                     image: "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Beng-Beng",
-                    deskripsi: "Minuman dengan rasa wafer coklat Beng-Beng",
-                    variants: [{label: "1 Gelas", price: 7000}],
+                    nama: "Teh Poci Beng-Beng",
+                    variants: [{label: "1 Cup", price: 7000}],
                     image: "https://images.unsplash.com/photo-1541658016709-82535e94bc69?w=400&h=300&fit=crop"
                 }
             ],
 
-            // === KATEGORI COFFEE ===
+
             coffee: [
                 {
-                    nama: "Good Day Mocacinno",
-                    deskripsi: "Kopi moka dengan rasa coklat yang nikmat",
-                    variants: [{label: "1 Gelas", price: 6000}],
+                    nama: "Teh Poci Good Day Mocacinno",
+                    variants: [{label: "1 Cup", price: 6000}],
                     image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Good Day Vanilla Latte",
-                    deskripsi: "Latte dengan aroma vanilla yang harum",
-                    variants: [{label: "1 Gelas", price: 6000}],
+                    nama: "Teh Poci Good Day Vanilla Latte",
+                    variants: [{label: "1 Cup", price: 6000}],
                     image: "https://images.unsplash.com/photo-1545665225-b23b99e4d45e?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Good Day Chococinno",
-                    deskripsi: "Cappuccino dengan rasa coklat yang rich",
-                    variants: [{label: "1 Gelas", price: 6000}],
+                    nama: "Teh Poci Good Day Chococinno",
+                    variants: [{label: "1 Cup", price: 6000}],
                     image: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Good Day Original",
-                    deskripsi: "Kopi original dengan cita rasa klasik",
-                    variants: [{label: "1 Gelas", price: 6000}],
+                    nama: "Teh Poci Good Day Original",
+                    variants: [{label: "1 Cup", price: 6000}],
                     image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Good Day Cappuccino",
-                    deskripsi: "Cappuccino dengan foam yang sempurna",
-                    variants: [{label: "1 Gelas", price: 6000}],
+                    nama: "Teh Poci Good Day Cappuccino",
+                    variants: [{label: "1 Cup", price: 6000}],
                     image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Caffino Kopi Latte Classic",
-                    deskripsi: "Latte klasik dengan rasa kopi yang authentic",
-                    variants: [{label: "1 Gelas", price: 6000}],
+                    nama: "Teh Poci Caffino Kopi Latte Classic",
+                    variants: [{label: "1 Cup", price: 6000}],
                     image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Caffino Kopi Latte Mocca",
-                    deskripsi: "Latte moka dengan perpaduan kopi dan coklat",
-                    variants: [{label: "1 Gelas", price: 6000}],
+                    nama: "Teh Poci Caffino Kopi Latte Mocca",
+                    variants: [{label: "1 Cup", price: 6000}],
                     image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Caffino Kopi Latte Hazelnut",
-                    deskripsi: "Latte dengan aroma hazelnut yang eksotis",
-                    variants: [{label: "1 Gelas", price: 6000}],
+                    nama: "Teh Poci Caffino Kopi Latte Hazelnut",
+                    variants: [{label: "1 Cup", price: 6000}],
                     image: "https://images.unsplash.com/photo-1512568400610-62da28bc8a13?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "LokaLate Kopi Alpukat",
-                    deskripsi: "Perpaduan unik kopi dan alpukat yang creamy",
-                    variants: [{label: "1 Gelas", price: 6000}],
+                    nama: "Teh Poci LokaLate Kopi Alpukat",
+                    variants: [{label: "1 Cup", price: 6000}],
                     image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "LokaLate Kopi Gula Aren",
-                    deskripsi: "Kopi dengan gula aren yang memberikan rasa manis alami",
-                    variants: [{label: "1 Gelas", price: 6000}],
+                    nama: "Teh Poci LokaLate Kopi Gula Aren",
+                    variants: [{label: "1 Cup", price: 6000}],
                     image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&h=300&fit=crop"
                 }
             ],
 
-            // === KATEGORI MILK ===
+
             milk: [
                 {
-                    nama: "HiLo Susu Chocolate Taro",
-                    deskripsi: "Susu coklat dengan rasa taro yang unik",
-                    variants: [{label: "1 Gelas", price: 6000}],
+                    nama: "Teh Poci HiLo Susu Chocolate Taro",
+                    variants: [{label: "1 Cup", price: 6000}],
                     image: "https://images.unsplash.com/photo-1571212515416-dbadc897d5b1?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "HiLo Susu Chocolate Banana",
-                    deskripsi: "Susu coklat pisang yang creamy dan manis",
-                    variants: [{label: "1 Gelas", price: 6000}],
+                    nama: "Teh Poci HiLo Susu Chocolate Banana",
+                    variants: [{label: "1 Cup", price: 6000}],
                     image: "https://images.unsplash.com/photo-1481487196290-c152efe083f5?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "HiLo Susu Chocolate Avocado",
-                    deskripsi: "Susu coklat alpukat yang sehat dan lezat",
-                    variants: [{label: "1 Gelas", price: 6000}],
+                    nama: "Teh Poci HiLo Susu Chocolate Avocado",
+                    variants: [{label: "1 Cup", price: 6000}],
                     image: "https://images.unsplash.com/photo-1568739175391-6c7bb7aaac04?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Indomilk Coklat",
-                    deskripsi: "Susu coklat klasik yang disukai semua umur",
-                    variants: [{label: "1 Gelas", price: 6000}],
+                    nama: "Teh Poci Indomilk Coklat",
+                    variants: [{label: "1 Cup", price: 6000}],
                     image: "https://images.unsplash.com/photo-1559717865-a99cac1c95d8?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Indomilk Putih",
-                    deskripsi: "Susu putih murni yang segar dan bergizi",
-                    variants: [{label: "1 Gelas", price: 6000}],
+                    nama: "Teh Poci Indomilk Putih",
+                    variants: [{label: "1 Cup", price: 6000}],
                     image: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&h=300&fit=crop"
                 },
                 {
-                    nama: "Milo",
-                    deskripsi: "Minuman coklat malt yang berenergi",
+                    nama: "Teh Poci Milo",
                     variants: [{label: "Regular", price: 6000}, {label: "Double", price: 7000}],
                     image: "https://images.unsplash.com/photo-1541658016709-82535e94bc69?w=400&h=300&fit=crop"
                 }
@@ -1239,11 +1169,10 @@
            
            
             
-            // === KATEGORI CEMILAN ===
+
             cemilan: [
                 {
                     nama: "Risol Mayo",
-                    deskripsi: "Risol crispy dengan mayonnaise yang creamy, cemilan yang sempurna",
                     variants: [
                         {label: "Per pcs", price: 6000}
                     ],
@@ -1251,7 +1180,6 @@
                 },
                 {
                     nama: "Dimsum Goreng Keju",
-                    deskripsi: "Dimsum yang digoreng crispy dengan taburan keju yang melimpah",
                     variants: [
                         {label: "Per pcs", price: 8000}
                     ],
@@ -1264,10 +1192,10 @@
            SISTEM KERANJANG BELANJA
            ====================================== */
         
-        // Menyimpan data keranjang dalam localStorage untuk persistensi data
+
         let cart = JSON.parse(localStorage.getItem('khim-dimsum-cart')) || [];
         
-        // Nomor WhatsApp kasir (bisa diubah sesuai kebutuhan)
+
         const WHATSAPP_NUMBER = "082145545119";
 
         /* ======================================
@@ -1275,25 +1203,25 @@
            ====================================== */
         
         function renderMenu() {
-            // Loop untuk setiap kategori menu
+
             Object.keys(menuData).forEach(category => {
                 const container = document.getElementById(`${category}-menu`);
                 if (!container) return;
                 
                 container.innerHTML = '';
                 
-                // Loop untuk setiap item dalam kategori
+
                 menuData[category].forEach((item, index) => {
                     const col = document.createElement('div');
                     col.className = 'col-lg-4 col-md-6 col-sm-12 mb-4';
                     
-                    // Membuat HTML kartu menu
+
                     col.innerHTML = `
                         <div class="menu-card">
                             <img src="${item.image}" alt="${item.nama}" class="menu-image">
                             <div class="menu-body">
                                 <h4 class="menu-title">${item.nama}</h4>
-                                <p class="menu-description">${item.deskripsi}</p>
+                                <p class="menu-description"></p>
                                 <div class="price-variants">
                                     ${item.variants.map(variant => `
                                         <div class="price-item">
@@ -1329,16 +1257,16 @@
             const item = menuData[category][itemIndex];
             const variant = item.variants[variantIndex];
             
-            // Cek apakah item sudah ada di keranjang
+
             const existingItemIndex = cart.findIndex(cartItem => 
                 cartItem.nama === item.nama && cartItem.variant === variant.label
             );
             
             if (existingItemIndex > -1) {
-                // Jika sudah ada, tambah quantity
+
                 cart[existingItemIndex].quantity += 1;
             } else {
-                // Jika belum ada, tambah item baru
+
                 cart.push({
                     nama: item.nama,
                     variant: variant.label,
@@ -1347,15 +1275,15 @@
                 });
             }
             
-            // Simpan ke localStorage
+
             localStorage.setItem('khim-dimsum-cart', JSON.stringify(cart));
             
-            // Update tampilan
+
             updateCartDisplay();
             animateCartButton();
             animateMenuItem(event.target);
             
-            // Tampilkan notifikasi
+
             showNotification(`${item.nama} (${variant.label}) ditambahkan ke keranjang!`);
         }
         
@@ -1381,11 +1309,11 @@
             const cartItems = document.getElementById('cart-items');
             const totalPrice = document.getElementById('total-price');
             
-            // Update jumlah item di badge
+
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             cartCount.textContent = totalItems;
             
-            // Update tampilan item di keranjang
+
             if (cart.length === 0) {
                 cartItems.innerHTML = `
                     <div class="empty-cart">
@@ -1418,7 +1346,7 @@
                 `).join('');
             }
             
-            // Update total harga
+
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             totalPrice.textContent = total.toLocaleString('id-ID');
         }
@@ -1456,7 +1384,7 @@
             document.getElementById('cart-modal').style.display = 'none';
         }
         
-        // Tutup modal ketika klik di luar area modal
+
         document.getElementById('cart-modal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeCart();
@@ -1468,7 +1396,7 @@
            ====================================== */
         
         function showCategory(category) {
-            // Scroll ke section yang dipilih dengan animasi smooth
+
             const section = document.getElementById(`${category}-section`);
             if (section) {
                 section.scrollIntoView({ 
@@ -1497,7 +1425,7 @@
                 return;
             }
             
-            // Format pesan WhatsApp
+
             let message = `🏮 *PESANAN KHIM DIMSUM* 🏮\n\n`;
             message += `👤 *Nama:* ${customerName}\n`;
             message += `⏰ *Jam Ambil:* ${pickupTime}\n\n`;
@@ -1519,20 +1447,20 @@
             
             message += `Terima kasih telah memesan di Khim Dimsum! 🙏`;
             
-            // Encode pesan untuk URL
+
             const encodedMessage = encodeURIComponent(message);
             
-            // Buka WhatsApp
+
             const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
             window.open(whatsappUrl, '_blank');
             
-            // Bersihkan keranjang setelah pesan
+
             cart = [];
             localStorage.setItem('khim-dimsum-cart', JSON.stringify(cart));
             updateCartDisplay();
             closeCart();
             
-            // Reset form
+
             document.getElementById('checkout-form').reset();
             
             showNotification('Pesanan berhasil dikirim ke WhatsApp!');
@@ -1543,7 +1471,7 @@
            ====================================== */
         
         function showNotification(message) {
-            // Buat elemen notifikasi
+
             const notification = document.createElement('div');
             notification.style.cssText = `
                 position: fixed;
@@ -1560,7 +1488,7 @@
             `;
             notification.textContent = message;
             
-            // Tambahkan CSS animasi
+
             const style = document.createElement('style');
             style.textContent = `
                 @keyframes slideIn {
@@ -1576,7 +1504,7 @@
             
             document.body.appendChild(notification);
             
-            // Hapus notifikasi setelah 3 detik
+
             setTimeout(() => {
                 notification.style.animation = 'slideOut 0.3s ease-out';
                 setTimeout(() => {
@@ -1590,7 +1518,7 @@
            FUNGSI LOGO MODAL
            ====================================== */
         
-        // Fungsi untuk membuka/menutup logo modal
+
         function toggleLogoModal(event) {
             event.preventDefault();
             event.stopPropagation();
@@ -1598,7 +1526,7 @@
             modal.style.display = 'block';
         }
         
-        // Fungsi untuk menutup logo modal
+
         function closeLogoModal(event) {
             if (event.target === event.currentTarget) {
                 const modal = document.getElementById('logoModal');
@@ -1606,7 +1534,7 @@
             }
         }
         
-        // Menutup modal dengan tombol ESC
+
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 const modal = document.getElementById('logoModal');
@@ -1618,13 +1546,13 @@
            EVENT LISTENERS
            ====================================== */
         
-        // Event listener untuk form checkout
+
         document.getElementById('checkout-form').addEventListener('submit', function(e) {
             e.preventDefault();
             processOrder();
         });
         
-        // Event listener untuk smooth scroll pada link navigasi
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1641,12 +1569,12 @@
            INISIALISASI APLIKASI
            ====================================== */
         
-        // Jalankan ketika halaman sudah dimuat
+
         document.addEventListener('DOMContentLoaded', function() {
             renderMenu();
             updateCartDisplay();
             
-            // Set waktu default untuk jam ambil (1 jam dari sekarang)
+
             const now = new Date();
             now.setHours(now.getHours() + 1);
             const timeString = now.toTimeString().slice(0, 5);
@@ -1680,4 +1608,3 @@
     </script>
 </body>
 </html>
-
